@@ -3,7 +3,6 @@ import { useContractWrite, useWaitForTransaction } from 'wagmi';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import Erc6551 from '../Contact/Erc6551-createAccount.json'
 import { decodeEventLog } from 'viem';
-import { Receipt } from '@mui/icons-material';
 
 export function CreateErc6551Account() {
   const [tokenId, setTokenId] = useState<string>('');
@@ -93,7 +92,17 @@ export function CreateErc6551Account() {
             value={tokenId}
             onChange={(e) => setTokenId(e.target.value)}
           />
-          <Button fullWidth variant="contained" disabled={isLoading} onClick={() => createFunction()}>
+          <Button fullWidth variant="contained" disabled={isLoading} onClick={() => createFunction()}
+            sx={{
+              ':disabled': {
+                bgcolor: 'grey.500',
+                color: 'grey.300',
+                '&:hover': {
+                  bgcolor: 'grey.500',
+                },
+              },
+            }}
+          >
             create
           </Button>
         </div>
