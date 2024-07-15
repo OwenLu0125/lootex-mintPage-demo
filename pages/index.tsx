@@ -11,48 +11,43 @@ const Home: NextPage = () => {
   return (
     <main className="...">
       <Head>
-        <title>CyberAquarium</title>
+        <title>lootex-mintPage-demo
+        </title>
         <meta
           content="developer by Kevin & Owen"
           name="description"
         />
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <div style={{
-        width: '100%',
-        height: '100vh',
-        backgroundColor: '#18131A',
-      }}>
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', zIndex: '999' }}>
-          <Paper
-            sx={{
-              width: '45%',
-              padding: '2rem',
-              maxHeight: '80vh',
-              background: '#18131A',
-              border: '2px solid #3E393E',
-              borderRadius: '1rem',
-              overflow: 'auto',
-              '&::-webkit-scrollbar': {
-                display: 'none'
-              },
-            }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', zIndex: '999' }}>
+        <Paper
+          sx={{
+            width: '45%',
+            padding: '2rem',
+            maxHeight: '80vh',
+            background: '#18131A',
+            border: '2px solid #3E393E',
+            borderRadius: '1rem',
+            overflow: 'auto',
+            '&::-webkit-scrollbar': {
+              display: 'none'
+            },
+          }}>
 
-            <Container sx={{ py: 2 }} maxWidth="md">
-              <Grid container direction={'column'} justifyContent="center" alignItems="center"
-                gap={2}
-              >
-                <ConnectButton />
-                <CreateErc6551Account />
-                <Erc6551MintNft />
-                <ReadTbaNftBalance />
-              </Grid>
-              {/* <WriteContract /> */}
-              {/* <ReadContract /> */}
-            </Container>
-          </Paper>
-        </Box>
-      </div>
+          <Container sx={{ py: 2 }} maxWidth="md">
+            <Grid container direction={'column'} justifyContent="center" alignItems="center"
+              gap={2}
+            >
+              <ConnectButton />
+              <CreateErc6551Account />
+              <Erc6551MintNft />
+              <ReadTbaNftBalance />
+            </Grid>
+            {/* <WriteContract /> */}
+            {/* <ReadContract /> */}
+          </Container>
+        </Paper>
+      </Box>
     </main >
   )
 }
