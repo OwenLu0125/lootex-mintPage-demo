@@ -105,9 +105,6 @@ const Home: NextPage = () => {
               <Typography paragraph color="white">為了慶祝 Lootex Smart Account 正式登場，我們推出了這個限量 10K Free Mint 的 AI-generated NFT 系列。馬上按下 Smart Mint 按鈕，一起加入 ‘Smart Frens’ 的行列吧！😉</Typography>
               <ul>
                 <Typography component="li" paragraph color="white">本活動僅限 Smart Account 帳戶參與，每個帳戶皆可 Mint 2 個 NFTs</Typography>
-                <Typography component="li" paragraph color="white">本次活動的 Gas Fee 由 Mantle Network 贊助</Typography>
-                <Typography component="li" paragraph color="white">Mint 期間 (UTC+8): 2024/01/31, 6 PM - Mint 完為止</Typography>
-                <Typography component="li" color="white">宣佈將於 (UTC+8) 2024/02/16, 3 PM 開啟</Typography>
               </ul>
               <Box display="flex" justifyContent='center'>
                 <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)}
