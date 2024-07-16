@@ -17,7 +17,8 @@ const Home: NextPage = () => {
     address: "0x8A45161bFB9c36748CCA23E251143d02cd7b540d",
     abi: Erc721.abi,
     functionName: 'balanceOf',
-    args: [address], //fill in user wallet address
+    args: [address], //fill in user wallet address 
+    // test address: 0xE2c0f71ebe5F5F5E3600CA632b16c5e850183ddf
     onSuccess: (balance: number) => {
       setBalance(Number(balance));
     }
@@ -26,12 +27,11 @@ const Home: NextPage = () => {
   // TODO: add mint function
 
   useEffect(() => {
-    // console.log(error);
-    // console.log(balance);
-    if (nftBalance && nftBalance > 2) {
-      console.log('nftBalance > 2', nftBalance);
+    console.log(nftBalance);
+    if (nftBalance && nftBalance >= 2) {
+      console.log('nftBalance >= 2', nftBalance);
     } else {
-      console.log('nftBalance is empty');
+      console.log('nftBalance < 2', nftBalance);
     }
 
   }, [error, balance, nftBalance]);
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                 <Typography component="li" color="white">宣佈將於 (UTC+8) 2024/02/16, 3 PM 開啟</Typography>
               </ul>
               <Box display="flex" justifyContent='center'>
-                <Button variant="contained" color="secondary" disabled={!address} sx={{
+                <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)} sx={{
                   "&:disabled": {
                     backgroundColor: 'gray'
                   }
