@@ -84,16 +84,19 @@ const Home: NextPage = () => {
           >
             <ConnectButton />
             <Box display="flex" justifyContent="space-between" mb={1} sx={{ width: '100%' }} >
-              <Typography variant="body2" color="white">{(nftBalance ?? 0 / 2) * 100} %</Typography>
-              <Typography variant="body2" color="white">{nftBalance ? nftBalance : 0} / 2</Typography>
+              <Typography variant="body2" color="white">{nftBalance ? (nftBalance / 2) * 100 : 0} %
+              </Typography>
+              <Typography variant="body2" color="white">{nftBalance ? nftBalance : 0} / 2
+              </Typography>
             </Box>
             <Box sx={{ width: '100%' }} mb={1}>
-              <LinearProgress variant="determinate" value={(nftBalance && nftBalance >= 2) ? 100 : (nftBalance ?? 0) * 100} sx={{
-                height: '10px', borderRadius: '23px', backgroundColor: 'grey.700',
-                '& .MuiLinearProgress-bar': {
-                  backgroundColor: '#FF0088'
-                }
-              }} />
+              <LinearProgress variant="determinate" value={!nftBalance ? 0 : nftBalance >= 2 ? 100 : nftBalance * 50}
+                sx={{
+                  height: '10px', borderRadius: '23px', backgroundColor: 'grey.700',
+                  '& .MuiLinearProgress-bar': {
+                    backgroundColor: '#FF0088'
+                  }
+                }} />
             </Box>
             <Box p={2} bgcolor="grey.900" borderRadius={2}>
               <Box display="flex" justifyContent="space-between" mb={1}>
