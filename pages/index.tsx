@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   });
 
   const { write: mintFunction, data, error: useContractWriteError, isLoading: useContractWriteIsLoading, isError } = useContractWrite({
-    address: "0xd060E336282bBF24D507f16EC9961EE677cc5915",
+    address: '0x8A45161bFB9c36748CCA23E251143d02cd7b540d',// contract address
     abi: Erc721.abi,
     functionName: 'mint',
     args: [BigInt(1)],
