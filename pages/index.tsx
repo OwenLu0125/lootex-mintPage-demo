@@ -85,7 +85,7 @@ const Home: NextPage = () => {
             <ConnectButton />
             <Typography color="black"
               sx={{
-                bgcolor: '#1DCDCD', borderRadius: '15px', padding: '5px'
+                bgcolor: '#1DCDCD', borderRadius: '15px', padding: '5px', fontWeight: 'bold'
               }}
             >限量 2 組 / 錢包
             </Typography>
