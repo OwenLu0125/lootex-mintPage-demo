@@ -125,6 +125,33 @@ const Home: NextPage = () => {
             <Erc6551MintNft />
             <ReadTbaNftBalance /> */}
           </Grid>
+          {isPending && <div>
+            <Typography
+              sx={{
+                color: 'white',
+              }}
+            >
+              Pending...
+            </Typography>
+          </div>
+          }
+          {receipt && <div>
+            <Typography
+              sx={{
+                color: 'white',
+              }}
+            >{receipt.transactionHash}
+            </Typography>
+          </div>}
+          {isError && error &&
+            <Typography
+              sx={{
+                color: 'purple',
+              }}
+            >
+              {error.toString()}
+            </Typography>
+          }
         </Paper>
       </Box>
     </main >
