@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Container, Paper, Grid, Box, } from '@mui/material';
+import { Container, Paper, Grid, Box, Button, LinearProgress, Link, Typography, } from '@mui/material';
 import { CreateErc6551Account } from '../components/CreateErc6551Account';
 import { Erc6551MintNft } from '../components/Erc6551MintNft';
 import { ReadTbaNftBalance } from '../components/ReadTbaNftBalance';
@@ -33,19 +33,36 @@ const Home: NextPage = () => {
               display: 'none'
             },
           }}>
-
-          <Container sx={{ py: 2 }} maxWidth="md">
-            <Grid container direction={'column'} justifyContent="center" alignItems="center"
-              gap={2}
-            >
-              <ConnectButton />
-              <CreateErc6551Account />
-              <Erc6551MintNft />
-              <ReadTbaNftBalance />
-            </Grid>
-            {/* <WriteContract /> */}
-            {/* <ReadContract /> */}
-          </Container>
+          <Grid container direction={'column'} justifyContent="center" alignItems="center"
+            gap={2}
+          >
+            <ConnectButton />
+            <Box display="flex" justifyContent="space-between" mb={1} >
+              <Typography variant="body2" color="white">限量 2 個 / 錢包</Typography>
+              <Typography variant="body2" color="white">10000 / 10000</Typography>
+            </Box>
+            <Box sx={{ width: '100%' }} mb={1}>
+              <LinearProgress variant="determinate" value={50} />
+            </Box>
+            <Box p={2} bgcolor="grey.900" borderRadius={2}>
+              <Box display="flex" justifyContent="space-between" mb={1}>
+                <Typography variant="h6" color="white">Smart Mint for Smart Frens! Zero Gas Fee!</Typography>
+              </Box>
+              <Typography paragraph color="white">為了慶祝 Lootex Smart Account 正式登場，我們推出了這個限量 10K Free Mint 的 AI-generated NFT 系列。馬上按下 Smart Mint 按鈕，一起加入 ‘Smart Frens’ 的行列吧！😉</Typography>
+              <ul>
+                <Typography component="li" paragraph color="white">本活動僅限 Smart Account 帳戶參與，每個帳戶皆可 Mint 2 個 NFTs</Typography>
+                <Typography component="li" paragraph color="white">本次活動的 Gas Fee 由 Mantle Network 贊助</Typography>
+                <Typography component="li" paragraph color="white">Mint 期間 (UTC+8): 2024/01/31, 6 PM - Mint 完為止</Typography>
+                <Typography component="li" color="white">宣佈將於 (UTC+8) 2024/02/16, 3 PM 開啟</Typography>
+              </ul>
+              <Box display="flex" justifyContent='center'>
+                <Button variant="contained" color="secondary">Mint</Button>
+              </Box>
+            </Box>
+            {/* <CreateErc6551Account />
+            <Erc6551MintNft />
+            <ReadTbaNftBalance /> */}
+          </Grid>
         </Paper>
       </Box>
     </main >
