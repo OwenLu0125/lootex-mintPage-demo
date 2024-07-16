@@ -42,7 +42,12 @@ const Home: NextPage = () => {
               <Typography variant="body2" color="white">10000 / 10000</Typography>
             </Box>
             <Box sx={{ width: '100%' }} mb={1}>
-              <LinearProgress variant="determinate" value={50} />
+              <LinearProgress variant="determinate" value={50} sx={{
+                height: '10px', borderRadius: '23px', backgroundColor: 'grey.700',
+                '& .MuiLinearProgress-bar': {
+                  backgroundColor: '#FF0088'
+                }
+              }} />
             </Box>
             <Box p={2} bgcolor="grey.900" borderRadius={2}>
               <Box display="flex" justifyContent="space-between" mb={1}>
