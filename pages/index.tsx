@@ -1,12 +1,39 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Container, Paper, Grid, Box, Button, LinearProgress, Link, Typography, } from '@mui/material';
+import { Paper, Grid, Box, Button, LinearProgress, Link, Typography, } from '@mui/material';
 import { CreateErc6551Account } from '../components/CreateErc6551Account';
 import { Erc6551MintNft } from '../components/Erc6551MintNft';
 import { ReadTbaNftBalance } from '../components/ReadTbaNftBalance';
+import { useAccount, useContractRead } from 'wagmi';
+import Erc721 from '../Contact/Erc721-demo.json'
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
+  const { address } = useAccount();
+  const [nftBalance, setBalance] = useState<number | undefined>(undefined);
+
+  const { data: balance, error, isLoading, isSuccess } = useContractRead({
+    address: "0x8A45161bFB9c36748CCA23E251143d02cd7b540d",
+    abi: Erc721.abi,
+    functionName: 'balanceOf',
+    args: [address], //fill in user wallet address
+    onSuccess: (balance: number) => {
+      setBalance(Number(balance));
+    }
+  });
+
+  useEffect(() => {
+    // console.log(error);
+    // console.log(balance);
+    if (nftBalance && nftBalance > 2) {
+      console.log('nftBalance > 2', nftBalance);
+    } else {
+      console.log('nftBalance is empty');
+    }
+
+  }, [error, balance, nftBalance]);
+
 
   return (
     <main className="...">
@@ -61,7 +88,12 @@ const Home: NextPage = () => {
                 <Typography component="li" color="white">宣佈將於 (UTC+8) 2024/02/16, 3 PM 開啟</Typography>
               </ul>
               <Box display="flex" justifyContent='center'>
-                <Button variant="contained" color="secondary">Mint</Button>
+                <Button variant="contained" color="secondary" disabled={!address} sx={{
+                  "&:disabled": {
+                    backgroundColor: 'gray'
+                  }
+                }
+                } > Mint</Button>
               </Box>
             </Box>
             {/* <CreateErc6551Account />
