@@ -10,6 +10,7 @@ export function Erc6551MintNft() {
   const [ERC6551AccountWallet, setERC6551AccountWallet] = useState<any>('');
   const [nftContractAddress, setNftContractAddress] = useState<any>('0x8A45161bFB9c36748CCA23E251143d02cd7b540d');
 
+  // TODO: refactor integration logic
   const { write: mintFunction, data, error, isLoading, isError } = useContractWrite({
     address: ERC6551AccountWallet, // fill in the tba address
     // 0x91c3acbd0c22d0ebd751939b3777aee5d7ac1ed3
@@ -99,6 +100,7 @@ export function Erc6551MintNft() {
           value={nftContractAddress}
           onChange={(e) => setNftContractAddress(e.target.value)}
         />
+        {/* TODO: add disabled logic */}
         <Button fullWidth variant="contained" onClick={() => mintFunction()}>
           Mint
         </Button>
