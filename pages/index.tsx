@@ -83,6 +83,12 @@ const Home: NextPage = () => {
             gap={2}
           >
             <ConnectButton />
+            <Typography color="black"
+              sx={{
+                bgcolor: '#1DCDCD', borderRadius: '15px', padding: '5px'
+              }}
+            >限量 2 組 / 錢包
+            </Typography>
             <Box display="flex" justifyContent="space-between" mb={1} sx={{ width: '100%' }} >
               <Typography variant="body2" color="white">{nftBalance ? (nftBalance / 2) * 100 : 0} %
               </Typography>
@@ -104,7 +110,7 @@ const Home: NextPage = () => {
               </Box>
               <Typography paragraph color="white">為了慶祝 Lootex Smart Account 正式登場，我們推出了這個限量 10K Free Mint 的 AI-generated NFT 系列。馬上按下 Smart Mint 按鈕，一起加入 ‘Smart Frens’ 的行列吧！😉</Typography>
               <ul>
-                <Typography component="li" paragraph color="white">本活動僅限 Smart Account 帳戶參與，每個帳戶皆可 Mint 2 個 NFTs</Typography>
+                <Typography component="li" paragraph color="white">每個帳戶皆可 Mint 2 個 NFTs</Typography>
               </ul>
               <Box display="flex" justifyContent='center'>
                 <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)}
