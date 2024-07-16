@@ -5,9 +5,9 @@ import { Paper, Grid, Box, Button, LinearProgress, Link, Typography, } from '@mu
 import { CreateErc6551Account } from '../components/CreateErc6551Account';
 import { Erc6551MintNft } from '../components/Erc6551MintNft';
 import { ReadTbaNftBalance } from '../components/ReadTbaNftBalance';
-import { useAccount, useContractRead } from 'wagmi';
+import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
 import Erc721 from '../Contact/Erc721-demo.json'
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
   const { address } = useAccount();
@@ -21,10 +21,27 @@ const Home: NextPage = () => {
     // test address: 0xE2c0f71ebe5F5F5E3600CA632b16c5e850183ddf
     onSuccess: (balance: number) => {
       setBalance(Number(balance));
+      console.log('read balance success:', balance);
     }
   });
 
-  // TODO: add mint function
+  const { write: mintFunction, data, error: useContractWriteError, isLoading: useContractWriteIsLoading, isError } = useContractWrite({
+    address: "0xd060E336282bBF24D507f16EC9961EE677cc5915",
+    abi: Erc721.abi,
+    functionName: 'mint',
+    args: [BigInt(1)],
+    onSuccess: (data) => {
+      console.log('mint success:', data);
+    }
+  });
+
+  const { data: receipt, isLoading: isPending, isSuccess: useWaitForTransactionSuccess } = useWaitForTransaction({ hash: data?.hash });
+
+  useEffect(() => {
+    console.log(receipt);
+    console.log(isPending);
+    console.log(useWaitForTransactionSuccess);
+  }, [isPending, receipt, useWaitForTransactionSuccess])
 
   useEffect(() => {
     console.log(nftBalance);
@@ -90,12 +107,14 @@ const Home: NextPage = () => {
                 <Typography component="li" color="white">宣佈將於 (UTC+8) 2024/02/16, 3 PM 開啟</Typography>
               </ul>
               <Box display="flex" justifyContent='center'>
-                <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)} sx={{
-                  "&:disabled": {
-                    backgroundColor: 'gray'
-                  }
-                }
-                } > Mint</Button>
+                <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)}
+                  sx={{
+                    "&:disabled": {
+                      backgroundColor: 'gray'
+                    }
+                  }}
+                  onClick={() => mintFunction()}
+                > Mint</Button>
               </Box>
             </Box>
             {/* <CreateErc6551Account />
