@@ -23,6 +23,8 @@ const Home: NextPage = () => {
     }
   });
 
+  // TODO: add mint function
+
   useEffect(() => {
     // console.log(error);
     // console.log(balance);
@@ -64,12 +66,12 @@ const Home: NextPage = () => {
             gap={2}
           >
             <ConnectButton />
-            <Box display="flex" justifyContent="space-between" mb={1} >
-              <Typography variant="body2" color="white">限量 2 個 / 錢包</Typography>
-              <Typography variant="body2" color="white">10000 / 10000</Typography>
+            <Box display="flex" justifyContent="space-between" mb={1} sx={{ width: '100%' }} >
+              <Typography variant="body2" color="white">{(nftBalance ?? 0 / 2) * 100} %</Typography>
+              <Typography variant="body2" color="white">{nftBalance} / 2</Typography>
             </Box>
             <Box sx={{ width: '100%' }} mb={1}>
-              <LinearProgress variant="determinate" value={50} sx={{
+              <LinearProgress variant="determinate" value={nftBalance} sx={{
                 height: '10px', borderRadius: '23px', backgroundColor: 'grey.700',
                 '& .MuiLinearProgress-bar': {
                   backgroundColor: '#FF0088'
