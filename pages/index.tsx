@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     abi: Erc721.abi,
     functionName: 'balanceOf',
     args: [address], //fill in user wallet address 
-    // test address: 0xE2c0f71ebe5F5F5E3600CA632b16c5e850183ddf
+    // args: ["0xE2c0f71ebe5F5F5E3600CA632b16c5e850183ddf"],
     onSuccess: (balance: number) => {
       setBalance(Number(balance));
       console.log('read balance success:', balance);
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
               <Typography variant="body2" color="white">{nftBalance} / 2</Typography>
             </Box>
             <Box sx={{ width: '100%' }} mb={1}>
-              <LinearProgress variant="determinate" value={nftBalance} sx={{
+              <LinearProgress variant="determinate" value={(nftBalance && nftBalance >= 2) ? 100 : (nftBalance ?? 0) * 100} sx={{
                 height: '10px', borderRadius: '23px', backgroundColor: 'grey.700',
                 '& .MuiLinearProgress-bar': {
                   backgroundColor: '#FF0088'
