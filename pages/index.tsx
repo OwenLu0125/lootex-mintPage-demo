@@ -109,6 +109,7 @@ const Home: NextPage = () => {
               <Box display="flex" justifyContent='center'>
                 <Button variant="contained" color="secondary" disabled={!!(!address || nftBalance && nftBalance >= 2)}
                   sx={{
+                    background: 'linear-gradient(90deg, rgba(255, 113, 170, 0.8) -31.07%, rgba(255, 25, 141, 0.8) 9.41%, rgba(149, 67, 255, 0.8) 49.89%, rgba(47, 81, 172, 0.8) 94.97%, rgba(22, 36, 83, 0.8) 145.56%)',
                     "&:disabled": {
                       backgroundColor: 'gray'
                     }
